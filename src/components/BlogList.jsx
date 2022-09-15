@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../style/bloglist.css"
 
@@ -12,21 +12,29 @@ function BlogLists()
 
     const fetchData=()=>
     {
-    axios.get("").then((res)=>
+    axios.get("http://localhost:5000/blogs").then((res)=>
     {
-        console.log(res.data)
+        setBlogData([...res.data])
     }).catch((err=>console.log(err)))
     }
+
+    useEffect(()=>
+    {
+fetchData()
+    },[])
     return (
         <>
         <div className="blog-list-container">
             <h2>All Blogs</h2>
            <Link style={{textDecoration:"none",color:"black"}} to="/blogdetails">
            {
-             <div className="blog-box">
-             <h2>Introduction to useState Hook</h2>
-             <h5>Written by yoshi</h5>
+            blogData.map((e)=>(
+                
+             <div className="blog-box" key={e._id}>
+             <h2>{e.title}</h2>
+             <h5>{e.author}</h5>
              </div>
+            ))
             }
            </Link>
         </div>

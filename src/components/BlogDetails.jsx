@@ -13,11 +13,12 @@ function BlogDetails()
 
     const fetchData=()=>
     {
-    axios.get("").then((res)=>
+    axios.get("http://localhost:5000/blogs").then((res)=>
     {
         console.log(res.data)
     }).catch((err=>console.log(err)))
     }
+    fetchData()
     return (
         <>
         <Navbar />

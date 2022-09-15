@@ -7,8 +7,9 @@ import Navbar from "./Navbar";
 
 export default function Create() {
   const [state, setState] = React.useState({
-    email: "",
-    password: "",
+    title: "",
+    body: "",
+    author:""
   });
 
   const navigate = useNavigate();
@@ -21,7 +22,12 @@ export default function Create() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+    console.log(state)
+    axios.post("http://localhost:5000/blogs",state).then((res)=>
+    {
+        setState([...res.data]);
+        alert("Blog Added !!")
+    }).catch((err=>console.log(err)))
   };
 
   return (
@@ -33,11 +39,11 @@ export default function Create() {
     <div className="blog-form-header"><h3>Add a New Blog</h3></div>
         <form onSubmit={handleSubmit}>
             <label>Blog Title</label><br />
-            <input type="text" placeholder="Title" onChange={handleChange} required /><br />
+            <input type="text" id="title" placeholder="Title" onChange={handleChange} required /><br />
             <label>Blog Body</label><br />
-            <input type="text" placeholder="Body" onChange={handleChange}  required /><br />
+            <input type="text" id="body" placeholder="Body" onChange={handleChange}  required /><br />
             <label>Author</label><br />
-            <select name="" id="" placeholder="Author" onChange={handleChange}>
+            <select name="" id="author" placeholder="Author" onChange={handleChange}>
                 <option value="SAURABH">RF</option>
                 <option value="SAURABH">RF</option>
                 <option value="SAURABH">RF</option>
