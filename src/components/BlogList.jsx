@@ -1,33 +1,36 @@
-import { useHistory, useParams } from "react-router-dom";
-import useFetch from "./useFetch";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../style/bloglist.css"
 
-const BlogDetails = () => {
-  const { id } = useParams();
-  const { data: blog, error, isPending } = useFetch('http://localhost:8000/blogs/' + id);
-  const history = useHistory();
+function BlogLists()
+{
 
-  const handleClick = () => {
-    fetch('http://localhost:8000/blogs/' + blog.id, {
-      method: 'DELETE'
-    }).then(() => {
-      history.push('/');
-    }) 
-  }
+    const [blogData,setBlogData]=useState([
 
-  return (
-    <div className="blog-details">
-      { isPending && <div>Loading...</div> }
-      { error && <div>{ error }</div> }
-      { blog && (
-        <article>
-          <h2>{ blog.title }</h2>
-          <p>Written by { blog.author }</p>
-          <div>{ blog.body }</div>
-          <button onClick={handleClick}>delete</button>
-        </article>
-      )}
-    </div>
-  );
+    ])
+
+    const fetchData=()=>
+    {
+    axios.get("").then((res)=>
+    {
+        console.log(res.data)
+    }).catch((err=>console.log(err)))
+    }
+    return (
+        <>
+        <div className="blog-list-container">
+            <h2>All Blogs</h2>
+           <Link style={{textDecoration:"none",color:"black"}} to="/blogdetails">
+           {
+             <div className="blog-box">
+             <h2>Introduction to useState Hook</h2>
+             <h5>Written by yoshi</h5>
+             </div>
+            }
+           </Link>
+        </div>
+        </>
+    )
 }
- 
-export default BlogDetails;
+export default BlogLists
