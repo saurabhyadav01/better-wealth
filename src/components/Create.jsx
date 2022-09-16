@@ -45,6 +45,7 @@ export default function Create() {
             <input type="text" id="body" placeholder="Body" onChange={handleChange}  required /><br />
             <label>Author</label><br />
             <select name="" id="authors" placeholder="Author" onChange={handleChange}>
+            <option value=""></option>
                 <option value="Yoshi">yoshi</option>
                 <option value="newton">Newton</option>
                 
