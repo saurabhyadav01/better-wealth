@@ -9,7 +9,7 @@ export default function Create() {
   const [state, setState] = React.useState({
     title: "",
     body: "",
-    author:""
+    authors:""
   });
 
   const navigate = useNavigate();
@@ -23,9 +23,9 @@ export default function Create() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(state)
-    axios.post("http://localhost:5000/blogs",state).then((res)=>
+    axios.post("https://iraitech-assignment-db.herokuapp.com/blogs",state).then((res)=>
     {
-        setState([...res.data]);
+        setState({...res.data});
         alert("Blog Added !!")
     }).catch((err=>console.log(err)))
   };
@@ -43,10 +43,10 @@ export default function Create() {
             <label>Blog Body</label><br />
             <input type="text" id="body" placeholder="Body" onChange={handleChange}  required /><br />
             <label>Author</label><br />
-            <select name="" id="author" placeholder="Author" onChange={handleChange}>
-                <option value="SAURABH">RF</option>
-                <option value="SAURABH">RF</option>
-                <option value="SAURABH">RF</option>
+            <select name="" id="authors" placeholder="Author" onChange={handleChange}>
+                <option value="Yoshi">yoshi</option>
+                <option value="newton">Newton</option>
+                
             </select><br />
            <button onClick={handleSubmit}>Add Blog</button>
         </form>

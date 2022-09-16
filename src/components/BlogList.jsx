@@ -6,14 +6,15 @@ import "../style/bloglist.css"
 function BlogLists()
 {
 
-    const [blogData,setBlogData]=useState([
-
-    ])
+    const [blogData,setBlogData]=useState(
+    []
+    )
 
     const fetchData=()=>
     {
-    axios.get("http://localhost:5000/blogs").then((res)=>
+    axios.get("https://iraitech-assignment-db.herokuapp.com/blogs").then((res)=>
     {
+        console.log(res.data)
         setBlogData([...res.data])
     }).catch((err=>console.log(err)))
     }
@@ -26,17 +27,20 @@ fetchData()
         <>
         <div className="blog-list-container">
             <h2>All Blogs</h2>
-           <Link style={{textDecoration:"none",color:"black"}} to="/blogdetails">
+         
            {
-            blogData.map((e)=>(
+            blogData.length ? blogData.map((e)=>(
                 
+             <Link style={{textDecoration:"none",color:"black"}} to={`/blogdetails/${e._id}`}>
              <div className="blog-box" key={e._id}>
              <h2>{e.title}</h2>
-             <h5>{e.author}</h5>
+             <h5>{e.authors}</h5>
              </div>
-            ))
+             </Link>
+            )) :"Loading..."
+            
             }
-           </Link>
+          
         </div>
         </>
     )

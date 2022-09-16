@@ -1,24 +1,45 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate,  useParams } from "react-router-dom";
 import "../style/blogdetails.css"
 import Navbar from "./Navbar";
 
 function BlogDetails()
 {
+  const navigate=useNavigate()
+    const [blogData,setBlogData]=useState(
+       {
+        title:"",
+        body:"",
+        author:""
+       }
 
-    const [blogData,setBlogData]=useState([
-
-    ])
-
+    )
+    const {id}=useParams()
+    const handleDelete=()=>
+    {
+        axios.put(`https://iraitech-assignment-db.herokuapp.com/blogs/${id}`).then((res)=>
+        {
+           
+            alert("Blog Deleted!!")
+            navigate("/")
+        }).catch((err=>console.log(err)))
+        
+    
+    }
     const fetchData=()=>
     {
-    axios.get("http://localhost:5000/blogs").then((res)=>
+    axios.get(`https://iraitech-assignment-db.herokuapp.com/blogs/${id}`).then((res)=>
     {
+        setBlogData({...res.data});
         console.log(res.data)
     }).catch((err=>console.log(err)))
     }
-    fetchData()
+
+    useEffect(()=>
+    {
+fetchData()
+    },[])
     return (
         <>
         <Navbar />
@@ -27,12 +48,13 @@ function BlogDetails()
  
            
              <div className="blog-box">
-             <h2>Introduction to useState Hook</h2>
-             <h5>Written by yoshi</h5>
+             <h2>{blogData.title}</h2>
+             <h5>{blogData.body}</h5>
+             <h6>{blogData.authors}</h6>
              </div>
             
          
-           <button>Delete</button>
+           <button onClick={handleDelete}>Delete</button>
         </div>
         </>
     )

@@ -7,10 +7,7 @@ import Navbar from "./Navbar";
 import BlogLists from "./BlogList";
 
 export default function Home() {
-  const [state, setState] = React.useState({
-    email: "",
-    password: "",
-  });
+
 
 
   return (
