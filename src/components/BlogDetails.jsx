@@ -45,15 +45,13 @@ fetchData()
         <Navbar />
         <div className="blog-list-container">
             <h2>Blog Details</h2>
- 
-           
-             <div className="blog-box">
-             <h2>{blogData.title}</h2>
-             <h5>{blogData.body}</h5>
-             <h6>{blogData.authors}</h6>
-             </div>
-            
-         
+              {
+                blogData.length ?<div className="blog-box">
+                <h2>{blogData.title}</h2>
+                <h5>{blogData.body}</h5>
+                <h6>{blogData.authors}</h6>
+                </div>:"Loading ..."
+              }
            <button onClick={handleDelete}>Delete</button>
         </div>
         </>
