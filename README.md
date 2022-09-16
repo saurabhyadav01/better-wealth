@@ -1,5 +1,12 @@
-
-
+ #project deploy link
+ https://better-wealth.vercel.app/
+ 
+#Teck stack
+1-React js
+2-Html
+3-Css
+4-React-hooks
+#Screensort
 ![Screenshot (122)](https://user-images.githubusercontent.com/72351102/190566673-d3055e4d-812f-491d-9e93-0eb09df23715.png)
 ![Screenshot (121)](https://user-images.githubusercontent.com/72351102/190566694-72836bfb-e09e-4f5f-84f6-c239ab49a32c.png)
 
