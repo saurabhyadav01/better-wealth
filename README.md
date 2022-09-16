@@ -1,7 +1,7 @@
  #project deploy link
  https://better-wealth.vercel.app/
  
-#Teck stack
+##Teck stack
 1-React js
 2-Html
 3-Css
