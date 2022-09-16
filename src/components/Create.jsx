@@ -27,6 +27,7 @@ export default function Create() {
     {
         setState({...res.data});
         alert("Blog Added !!")
+        navigate("/")
     }).catch((err=>console.log(err)))
   };
 
