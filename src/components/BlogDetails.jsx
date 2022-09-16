@@ -50,7 +50,7 @@ fetchData()
                 <h2>{blogData.title}</h2>
                 <h5>{blogData.body}</h5>
                 <h6>{blogData.authors}</h6>
-                </div>:"Loading ..."
+                </div>:"Loading..."
               }
            <button onClick={handleDelete}>Delete</button>
         </div>

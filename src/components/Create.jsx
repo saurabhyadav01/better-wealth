@@ -37,7 +37,7 @@ export default function Create() {
   <div className="add-blog-container">
    
     <div className="blog-form" >
-    <div className="blog-form-header"><h3>Add a New Blog</h3></div>
+    <div className="blog-form-header"><h3 style={{color:"#f1356d",textAlign:"center"}}>Add a New Blog</h3></div>
         <form onSubmit={handleSubmit}>
             <label>Blog Title</label><br />
             <input type="text" id="title" placeholder="Title" onChange={handleChange} required /><br />
